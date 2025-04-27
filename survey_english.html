@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ideal Medical Laboratory Survey</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 5px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #3498db;
+            margin-top: 30px;
+            border-left: 4px solid #3498db;
+            padding-left: 10px;
+        }
+        h3 {
+            color: #2980b9;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+        }
+        .question {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .options {
+            margin-top: 10px;
+        }
+        .option {
+            margin-bottom: 8px;
+        }
+        input[type="checkbox"], input[type="radio"] {
+            margin-right: 10px;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            resize: vertical;
+            min-height: 80px;
+            font-family: inherit;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .intro, .conclusion {
+            text-align: justify;
+            padding: 15px;
+            background-color: #f0f8ff;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .submit-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            display: block;
+            margin: 30px auto;
+            width: 200px;
+            transition: background-color 0.3s;
+        }
+        .submit-btn:hover {
+            background-color: #2980b9;
+        }
+        .conditional {
+            margin-left: 20px;
+            padding: 10px;
+            border-left: 2px solid #ddd;
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ideal Medical Laboratory Survey</h1>
+        
+        <div class="intro">
+            <h2>Introduction</h2>
+            <p>Greetings,</p>
+            <p>We are pleased to invite you to participate in this scientific survey, which is part of a graduation project in Medical Equipment Engineering at Al-Bayan University for Science and Technology titled "The Ideal Medical Laboratory." This survey aims to collect accurate and comprehensive data about the reality of medical laboratories from technical and administrative perspectives, focusing on maintenance, equipment failures, result accuracy, safety, and accreditation.</p>
+            <p>Your valuable participation in this survey will effectively contribute to developing an integrated vision for the ideal medical laboratory and will help identify the real challenges facing medical laboratories and ways to overcome them. Your answers will also contribute to providing practical and innovative solutions to improve the performance of medical laboratories and ensure the quality of their services.</p>
+            <p>We assure you that all data and information you provide will be treated with complete confidentiality and will only be used for scientific research purposes. Completing this survey takes approximately 10-15 minutes of your valuable time.</p>
+            <p>Thank you for your cooperation and valuable contribution to the success of this scientific project.</p>
+        </div>
+        
+        <form id="labSurvey">
+            <div class="section">
+                <h2>Respondent Information</h2>
+                <div class="question">
+                    <h3>Type of Medical Laboratory:</h3>
+                    <div class="options">
+                        <div class="option"><input type="radio" name="labType" id="labType1" value="government"><label for="labType1">Government Hospital Laboratory</label></div>
+                        <div class="option"><input type="radio" name="labType" id="labType2" value="private"><label for="labType2">Private Hospital Laboratory</label></div>
+                        <div class="option"><input type="radio" name="labType" id="labType3" value="independent"><label for="labType3">Independent Laboratory</label></div>
+                        <div class="option"><input type="radio" name="labType" id="labType4" value="academic"><label for="labType4">Academic/Research Laboratory</label></div>
+                        <div class="option">
+                            <input type="radio" name="labType" id="labType5" value="other">
+                            <label for="labType5">Other (please specify):</label>
+                            <input type="text" id="labTypeOther">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>Laboratory Size:</h3>
+                    <div class="options">
+                        <div class="option"><input type="radio" name="labSize" id="labSize1" value="small"><label for="labSize1">Small (less than 10 employees)</label></div>
+                        <div class="option"><input type="radio" name="labSize" id="labSize2" value="medium"><label for="labSize2">Medium (10-30 employees)</label></div>
+                        <div class="option"><input type="radio" name="labSize" id="labSize3" value="large"><label for="labSize3">Large (more than 30 employees)</label></div>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>Geographic Region:</h3>
+                    <div class="options">
+                        <div class="option"><input type="radio" name="region" id="region1" value="north"><label for="region1">Northern Region</label></div>
+                        <div class="option"><input type="radio" name="region" id="region2" value="south"><label for="region2">Southern Region</label></div>
+                        <div class="option"><input type="radio" name="region" id="region3" value="east"><label for="region3">Eastern Region</label></div>
+                        <div class="option"><input type="radio" name="region" id="region4" value="west"><label for="region4">Western Region</label></div>
+                        <div class="option"><input type="radio" name="region" id="region5" value="central"><label for="region5">Central Region</label></div>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>Respondent's Job Title:</h3>
+                    <div class="options">
+                        <div class="option"><input type="radio" name="position" id="position1" value="manager"><label for="position1">Laboratory Manager</label></div>
+                        <div class="option"><input type="radio" name="position" id="position2" value="specialist"><label for="position2">Laboratory Specialist</label></div>
+                        <div class="option"><input type="radio" name="position" id="position3" value="technician"><label for="position3">Laboratory Technician</label></div>
+                        <div class="option"><input type="radio" name="position" id="position4" value="engineer"><label for="position4">Medical Equipment Engineer</label></div>
+                        <div class="option"><input type="radio" name="position" id="position5" value="quality"><label for="position5">Quality Manager</label></div>
+                        <div class="option">
+                            <input type="radio" name="position" id="position6" value="other">
+                            <label for="position6">Other (please specify):</label>
+                            <input type="text" id="positionOther">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>Years of Experience in Medical Laboratories:</h3>
+                    <div class="options">
+                        <div class="option"><input type="radio" name="experience" id="experience1" value="less5"><label for="experience1">Less than 5 years</label></div>
+                        <div class="option"><input type="radio" name="experience" id="experience2" value="5to10"><label for="experience2">5-10 years</label></div>
+                        <div class="option"><input type="radio" name="experience" id="experience3" value="more10"><label for="experience3">More than 10 years</label></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>Section 1: Equipment Failures and Maintenance</h2>
+                
+                <div class="question">
+                    <h3>1. Which types of equipment experience the most frequent failures?</h3>
+                    <div class="options">
+                        <div class="option"><input type="radio" name="failureEquipment" id="failureEquipment1" value="centrifuge"><label for="failureEquipment1">Centrifuges</label></div>
+                        <div class="option"><input type="radio" name="failureEquipment" id="failureEquipment2" value="automatic"><label for="failureEquipment2">Automated Analyzers</label></div>
+                        <div class="option"><input type="radio" name="failureEquipment" id="failureEquipment3" value="microscope"><label for="failureEquipment3">Microscopes</label></div>
+                        <div class="option"><input type="radio" name="failureEquipment" id="failureEquipment4" value="refrigerator"><label for="failureEquipment4">Refrigerators and Freezers</label></div>
+                        <div class="option">
+                            <input type="radio" name="failureEquipment" id="failureEquipment5" value="other">
+                            <label for="failureEquipment5">Other (please specify):</label>
+                            <input type="text" id="failureEquipmentOther">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>2. How often do equipment failures occur per month?</h3>
+                    <div class="options">
+                        <div class="option"><input type="radio" name="failureFrequency" id="failureFrequency1" value="rare"><label for="failureFrequency1">Rarely (once or less)</label></div>
+                        <div class="option"><input type="radio" name="failureFrequency" id="failureFrequency2" value="medium"><label for="failureFrequency2">Moderate (2-3 times)</label></div>
+                        <div class="option"><input type="radio" name="failureFrequency" id="failureFrequency3" value="frequent"><label for="failureFrequency3">Frequently (more than 3 times)</label></div>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>3. Do you have a regular maintenance contract with a specialized company?</h3>
+                    <div class="options">
+                        <div class="option"><input type="radio" name="maintenanceContract" id="maintenanceContract1" value="yes"><label for="maintenanceContract1">Yes</label></div>
+                        <div class="option"><input type="radio" name="maintenanceContract" id="maintenanceContract2" value="no"><label for="maintenanceContract2">No</label></div>
+                    </div>
+                    
+                    <div class="conditional" id="noContractReason">
+                        <h3>3.1 If "No", what is the reason?</h3>
+                        <div class="options">
+                            <div class="option"><input type="radio" name="noContractReason" id="noContractReason1" value="highCost"><label for="noContractReason1">High cost</label></div>
+                            <div class="option"><input type="radio" name="noContractReason" id="noContractReason2" value="noReliable"><label for="noContractReason2">Lack of reliable companies</label></div>
+                            <div class="option"><input type="radio" name="noContractReason" id="noContractReason3" value="internal"><label for="noContractReason3">Reliance on internal maintenance</label></div>
+                            <div class="option">
+                                <input type="radio" name="noContractReason" id="noContractReason4" value="other">
+                                <label for="noContractReason4">Other (please specify):</label>
+                                <input type="text" id="noContractReasonOther">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>4. What are the most common failures in the medical laboratory?</h3>
+                    <textarea name="commonFailures" placeholder="Please write your answer here..."></textarea>
+                </div>
+                
+                <div class="question">
+                    <h3>5. How long does it typically take to repair failures?</h3>
+                    <div class="options">
+                        <div class="option"><input type="radio" name="repairTime" id="repairTime1" value="lessThanDay"><label for="repairTime1">Less than a day</label></div>
+                        <div class="option"><input type="radio" name="repairTime" id="repairTime2" value="1to3days"><label for="repairTime2">1-3 days</label></div>
+                        <div class="option"><input type="radio" name="repairTime" id="repairTime3" value="moreThan3days"><label for="repairTime3">More than 3 days</label></div>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>6. What is the impact of these failures on workflow?</h3>
+                    <textarea name="failureImpact" placeholder="Please write your answer here..."></textarea>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>Section 2: Financial Management Related to Maintenance</h2>
+                
+                <div class="question">
+                    <h3>1. What percentage of the laboratory's total budget is allocated to maintenance?</h3>
+                    <div class="options">
+                        <div class="option"><input type="radio" name="maintenanceBudget" id="maintenanceBudget1" value="lessThan5"><label for="maintenanceBudget1">Less than 5%</label></div>
+                        <div class="option"><input type="radio" name="maintenanceBudget" id="maintenanceBudget2" value="5to15"><label for="maintenanceBudget2">5% - 15%</label></div>
+                        <div class="option"><input type="radio" name="maintenanceBudget" id="maintenanceBudget3" value="moreThan15"><label for="maintenanceBudget3">More than 15%</label></div>
+                        <div class="option"><input type="radio" name="maintenanceBudget" id="maintenanceBudget4" value="noBudget"><label for="maintenanceBudget4">No specific budget allocated for maintenance</label></div>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>2. Are there periods when maintenance is delayed due to financial issues?</h3>
+                    <div class="options">
+                        <div class="option"><input type="radio" name="maintenanceDelay" id="maintenanceDelay1" value="no"><label for="maintenanceDelay1">No</label></div>
+                        <div class="option"><input type="radio" name="maintenanceDelay" id="maintenanceDelay2" value="yes"><label for="maintenanceDelay2">Yes</label></div>
+                    </div>
+                    
+                    <div class="conditional" id="delayDuration">
+                        <h3>2.1 If "Yes", what is the average delay?</h3>
+                        <div class="options">
+                            <div class="option"><input type="radio" name="delayDuration" id="delayDuration1" value="lessThanWeek"><label for="delayDuration1">Less than a week</label></div>
+                            <div class="option"><input type="radio" name="delayDuration" id="delayDuration2" value="weekToMonth"><label for="delayDuration2">1 week - 1 month</label></div>
+                            <div class="option"><input type="radio" name="delayDuration" id="delayDuration3" value="moreThanMonth"><label for="delayDuration3">More than a month</label></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>3. What are your suggestions for improving the maintenance system from a financial perspective?</h3>
+                    <textarea name="financialSuggestions" placeholder="Please write your answer here..."></textarea>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>Section 3: Results Accuracy</h2>
+                
+                <div class="question">
+                    <h3>1. Do you notice any variations or inaccuracies in test results?</h3>
+                    <div class="options">
+                        <div class="option"><input type="radio" name="resultsVariation" id="resultsVariation1" value="yes"><label for="resultsVariation1">Yes</label></div>
+                        <div class="option"><input type="radio" name="resultsVariation" id="resultsVariation2" value="no"><label for="resultsVariation2">No</label></div>
+                        <div class="option"><input type="radio" name="resultsVariation" id="resultsVariation3" value="sometimes"><label for="resultsVariation3">Sometimes</label></div>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>2. What factors do you believe affect the accuracy of results? (You may select multiple options)</h3>
+                    <div class="options">
+                        <div class="option"><input type="checkbox" name="accuracyFactors" id="accuracyFactors1" value="technical"><label for="accuracyFactors1">Technical issues or failures</label></div>
+                        <div class="option"><input type="checkbox" name="accuracyFactors" id="accuracyFactors2" value="calibration"><label for="accuracyFactors2">Lack of regular equipment calibration</label></div>
+                        <div class="option"><input type="checkbox" name="accuracyFactors" id="accuracyFactors3" value="oldEquipment"><label for="accuracyFactors3">Outdated equipment and lack of updates</label></div>
+                        <div class="option"><input type="checkbox" name="accuracyFactors" id="accuracyFactors4" value="poorMaintenance"><label for="accuracyFactors4">Poor periodic maintenance</label></div>
+                        <div class="option"><input type="checkbox" name="accuracyFactors" id="accuracyFactors5" value="humanError"><label for="accuracyFactors5">Human errors</label></div>
+                        <div class="option">
+                            <input type="checkbox" name="accuracyFactors" id="accuracyFactors6" value="other">
+                            <label for="accuracyFactors6">Other (please specify):</label>
+                            <input type="text" id="accuracyFactorsOther">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>3. Is periodic calibration performed on equipment?</h3>
+                    <div class="options">
+                        <div class="option"><input type="radio" name="calibration" id="calibration1" value="regular"><label for="calibration1">Yes, regularly</label></div>
+                        <div class="option"><input type="radio" name="calibration" id="calibration2" value="irregular"><label for="calibration2">Yes, but irregularly</label></div>
+                        <div class="option"><input type="radio" name="calibration" id="calibration3" value="rarely"><label for="calibration3">Rarely performed</label></div>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>4. Who is responsible for verifying the accuracy of results and their compliance with standards?</h3>
+                    <div class="options">
+                        <div class="option"><input type="radio" name="accuracyResponsible" id="accuracyResponsible1" value="technician"><label for="accuracyResponsible1">Laboratory Technician</label></div>
+                        <div class="option"><input type="radio" name="accuracyResponsible" id="accuracyResponsible2" value="engineer"><label for="accuracyResponsible2">Maintenance Engineer</label></div>
+                        <div class="option"><input type="radio" name="accuracyResponsible" id="accuracyResponsible3" value="quality"><label for="accuracyResponsible3">Quality Management</label></div>
+                        <div class="option"><input type="radio" name="accuracyResponsible" id="accuracyResponsible4" value="none"><label for="accuracyResponsible4">No specific person responsible</label></div>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>5. Has a maintenance or equipment issue ever caused incorrect test results?</h3>
+                    <div class="options">
+                        <div class="option"><input type="radio" name="maintenanceError" id="maintenanceError1" value="no"><label for="maintenanceError1">No</label></div>
+                        <div class="option"><input type="radio" name="maintenanceError" id="maintenanceError2" value="yes"><label for="maintenanceError2">Yes</label></div>
+                    </div>
+                    
+                    <div class="conditional" id="errorDescription">
+                        <h3>5.1 If "Yes", how did it happen?</h3>
+                        <textarea name="errorDescription" placeholder="Please write your answer here..."></textarea>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>6. In case of doubt about the accuracy of results, how are they handled?</h3>
+                    <textarea name="doubtHandling" placeholder="Please write your answer here..."></textarea>
+                </div>
+                
+                <div class="question">
+                    <h3>7. What are your suggestions for improving result accuracy in light of maintenance and operational issues?</h3>
+                    <textarea name="accuracySuggestions" placeholder="Please write your answer here..."></textarea>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>Section 4: Audit and Accreditation</h2>
+                
+                <div class="question">
+                    <h3>1. Has the laboratory obtained any local or international accreditation certificates?</h3>
+                    <div class="options">
+                        <div class="option"><input type="radio" name="accreditation" id="accreditation1" value="yes"><label for="accreditation1">Yes</label></div>
+                        <div class="option"><input type="radio" name="accreditation" id="accreditation2" value="no"><label for="accreditation2">No</label></div>
+                        <div class="option"><input type="radio" name="accreditation" id="accreditation3" value="inProcess"><label for="accreditation3">In the process of applying for accreditation</label></div>
+                    </div>
+                    
+                    <div class="conditional" id="accreditationType">
+                        <h3>1.1 If "Yes", please specify the type of accreditation:</h3>
+                        <div class="options">
+                            <div class="option"><input type="checkbox" name="accreditationType" id="accreditationType1" value="iso"><label for="accreditationType1">ISO 15189</label></div>
+                            <div class="option"><input type="checkbox" name="accreditationType" id="accreditationType2" value="cap"><label for="accreditationType2">CAP (College of American Pathologists)</label></div>
+                            <div class="option"><input type="checkbox" name="accreditationType" id="accreditationType3" value="jci"><label for="accreditationType3">JCI (Joint Commission International)</label></div>
+                            <div class="option"><input type="checkbox" name="accreditationType" id="accreditationType4" value="local"><label for="accreditationType4">Local accreditation from Ministry of Health</label></div>
+                            <div class="option">
+                                <input type="checkbox" name="accreditationType" id="accreditationType5" value="other">
+                                <label for="accreditationType5">Other (please specify):</label>
+                                <input type="text" id="accreditationTypeOther">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>2. Is there an approved quality management and documentation system in the laboratory?</h3>
+                    <div class="options">
+                        <div class="option"><input type="radio" name="qualitySystem" id="qualitySystem1" value="fullSystem"><label for="qualitySystem1">Yes, a comprehensive system fully implemented</label></div>
+                        <div class="option"><input type="radio" name="qualitySystem" id="qualitySystem2" value="partialSystem"><label for="qualitySystem2">Yes, but partially implemented</label></div>
+                        <div class="option"><input type="radio" name="qualitySystem" id="qualitySystem3" value="noSystem"><label for="qualitySystem3">No formal documentation and quality management system</label></div>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>3. How are maintenance and calibration processes documented in the laboratory?</h3>
+                    <div class="options">
+                        <div class="option"><input type="radio" name="documentationMethod" id="documentationMethod1" value="paper"><label for="documentationMethod1">Organized paper records</label></div>
+                        <div class="option"><input type="radio" name="documentationMethod" id="documentationMethod2" value="electronic"><label for="documentationMethod2">Specialized electronic system</label></div>
+                        <div class="option"><input type="radio" name="documentationMethod" id="documentationMethod3" value="mixed"><label for="documentationMethod3">Combination of paper and electronic records</label></div>
+                        <div class="option"><input type="radio" name="documentationMethod" id="documentationMethod4" value="none"><label for="documentationMethod4">No regular documentation</label></div>
+                        <div class="option">
+                            <input type="radio" name="documentationMethod" id="documentationMethod5" value="other">
+                            <label for="documentationMethod5">Other (please specify):</label>
+                            <input type="text" id="documentationMethodOther">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>4. Is internal periodic auditing conducted on equipment performance and result quality?</h3>
+                    <div class="options">
+                        <div class="option"><input type="radio" name="internalAudit" id="internalAudit1" value="monthly"><label for="internalAudit1">Yes, regularly (monthly)</label></div>
+                        <div class="option"><input type="radio" name="internalAudit" id="internalAudit2" value="quarterly"><label for="internalAudit2">Yes, regularly (quarterly)</label></div>
+                        <div class="option"><input type="radio" name="internalAudit" id="internalAudit3" value="yearly"><label for="internalAudit3">Yes, regularly (yearly)</label></div>
+                        <div class="option"><input type="radio" name="internalAudit" id="internalAudit4" value="irregular"><label for="internalAudit4">Yes, but irregularly</label></div>
+                        <div class="option"><input type="radio" name="internalAudit" id="internalAudit5" value="no"><label for="internalAudit5">No internal auditing is conducted</label></div>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>5. What are the main challenges you face in obtaining or maintaining accreditation? (You may select multiple options)</h3>
+                    <div class="options">
+                        <div class="option"><input type="checkbox" name="accreditationChallenges" id="accreditationChallenges1" value="cost"><label for="accreditationChallenges1">High cost</label></div>
+                        <div class="option"><input type="checkbox" name="accreditationChallenges" id="accreditationChallenges2" value="staff"><label for="accreditationChallenges2">Lack of qualified personnel</label></div>
+                        <div class="option"><input type="checkbox" name="accreditationChallenges" id="accreditationChallenges3" value="standards"><label for="accreditationChallenges3">Difficulty implementing required standards</label></div>
+                        <div class="option"><input type="checkbox" name="accreditationChallenges" id="accreditationChallenges4" value="support"><label for="accreditationChallenges4">Insufficient administrative support</label></div>
+                        <div class="option"><input type="checkbox" name="accreditationChallenges" id="accreditationChallenges5" value="documentation"><label for="accreditationChallenges5">Difficulties in documenting procedures</label></div>
+                        <div class="option"><input type="checkbox" name="accreditationChallenges" id="accreditationChallenges6" value="maintenance"><label for="accreditationChallenges6">Challenges related to equipment maintenance and calibration</label></div>
+                        <div class="option">
+                            <input type="checkbox" name="accreditationChallenges" id="accreditationChallenges7" value="other">
+                            <label for="accreditationChallenges7">Other (please specify):</label>
+                            <input type="text" id="accreditationChallengesOther">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>Section 5: Laboratory Safety</h2>
+                
+                <div class="question">
+                    <h3>1. Are there clear and written safety procedures and protocols in the laboratory?</h3>
+                    <div class="options">
+                        <div class="option"><input type="radio" name="safetyProtocols" id="safetyProtocols1" value="fullDocumented"><label for="safetyProtocols1">Yes, fully documented and available to all staff</label></div>
+                        <div class="option"><input type="radio" name="safetyProtocols" id="safetyProtocols2" value="partialDocumented"><label for="safetyProtocols2">Yes, but not fully documented</label></div>
+                        <div class="option"><input type="radio" name="safetyProtocols" id="safetyProtocols3" value="noDocumented"><label for="safetyProtocols3">No written procedures</label></div>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>2. Are laboratory staff regularly trained on safety procedures?</h3>
+                    <div class="options">
+                        <div class="option"><input type="radio" name="safetyTraining" id="safetyTraining1" value="regular6months"><label for="safetyTraining1">Yes, regularly (every 6 months or less)</label></div>
+                        <div class="option"><input type="radio" name="safetyTraining" id="safetyTraining2" value="yearly"><label for="safetyTraining2">Yes, annually</label></div>
+                        <div class="option"><input type="radio" name="safetyTraining" id="safetyTraining3" value="irregular"><label for="safetyTraining3">Yes, but irregularly</label></div>
+                        <div class="option"><input type="radio" name="safetyTraining" id="safetyTraining4" value="no"><label for="safetyTraining4">No regular training is conducted</label></div>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>3. What safety equipment is available in the laboratory? (You may select multiple options)</h3>
+                    <div class="options">
+                        <div class="option"><input type="checkbox" name="safetyEquipment" id="safetyEquipment1" value="fireAlarm"><label for="safetyEquipment1">Fire alarm systems</label></div>
+                        <div class="option"><input type="checkbox" name="safetyEquipment" id="safetyEquipment2" value="fireExtinguisher"><label for="safetyEquipment2">Fire extinguishers</label></div>
+                        <div class="option"><input type="checkbox" name="safetyEquipment" id="safetyEquipment3" value="emergencyShower"><label for="safetyEquipment3">Emergency shower</label></div>
+                        <div class="option"><input type="checkbox" name="safetyEquipment" id="safetyEquipment4" value="eyeWash"><label for="safetyEquipment4">Eye wash station</label></div>
+                        <div class="option"><input type="checkbox" name="safetyEquipment" id="safetyEquipment5" value="biosafetyCabinet"><label for="safetyEquipment5">Biosafety Cabinet</label></div>
+                        <div class="option"><input type="checkbox" name="safetyEquipment" id="safetyEquipment6" value="ppe"><label for="safetyEquipment6">Personal Protective Equipment (gloves, masks, safety glasses)</label></div>
+                        <div class="option"><input type="checkbox" name="safetyEquipment" id="safetyEquipment7" value="ventilation"><label for="safetyEquipment7">Adequate ventilation system</label></div>
+                        <div class="option">
+                            <input type="checkbox" name="safetyEquipment" id="safetyEquipment8" value="other">
+                            <label for="safetyEquipment8">Other (please specify):</label>
+                            <input type="text" id="safetyEquipmentOther">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>4. Have there been any safety-related injuries or incidents in the laboratory during the past year?</h3>
+                    <div class="options">
+                        <div class="option"><input type="radio" name="safetyIncidents" id="safetyIncidents1" value="no"><label for="safetyIncidents1">No, no injuries occurred</label></div>
+                        <div class="option"><input type="radio" name="safetyIncidents" id="safetyIncidents2" value="minor"><label for="safetyIncidents2">Yes, minor incidents (1-2 incidents)</label></div>
+                        <div class="option"><input type="radio" name="safetyIncidents" id="safetyIncidents3" value="multiple"><label for="safetyIncidents3">Yes, multiple incidents (3 or more)</label></div>
+                    </div>
+                    
+                    <div class="conditional" id="incidentsRelatedToEquipment">
+                        <h3>4.1 If "Yes", were these incidents related to equipment failures?</h3>
+                        <div class="options">
+                            <div class="option"><input type="radio" name="incidentsRelatedToEquipment" id="incidentsRelatedToEquipment1" value="allRelated"><label for="incidentsRelatedToEquipment1">Yes, all of them</label></div>
+                            <div class="option"><input type="radio" name="incidentsRelatedToEquipment" id="incidentsRelatedToEquipment2" value="someRelated"><label for="incidentsRelatedToEquipment2">Yes, some of them</label></div>
+                            <div class="option"><input type="radio" name="incidentsRelatedToEquipment" id="incidentsRelatedToEquipment3" value="notRelated"><label for="incidentsRelatedToEquipment3">No, they were not related to equipment failures</label></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question">
+                    <h3>5. What are the main challenges you face in implementing safety standards in the laboratory? (You may select multiple options)</h3>
+                    <div class="options">
+                        <div class="option"><input type="checkbox" name="safetyChallenges" id="safetyChallenges1" value="financialResources"><label for="safetyChallenges1">Lack of financial resources</label></div>
+                        <div class="option"><input type="checkbox" name="safetyChallenges" id="safetyChallenges2" value="specializedTraining"><label for="safetyChallenges2">Lack of specialized training</label></div>
+                        <div class="option"><input type="checkbox" name="safetyChallenges" id="safetyChallenges3" value="staffCommitment"><label for="safetyChallenges3">Lack of commitment from some staff</label></div>
+                        <div class="option"><input type="checkbox" name="safetyChallenges" id="safetyChallenges4" value="oldInfrastructure"><label for="safetyChallenges4">Outdated laboratory infrastructure</label></div>
+                        <div class="option"><input type="checkbox" name="safetyChallenges" id="safetyChallenges5" value="insufficientSpace"><label for="safetyChallenges5">Insufficient available space</label></div>
+                        <div class="option"><input type="checkbox" name="safetyChallenges" id="safetyChallenges6" value="lackOfEquipment"><label for="safetyChallenges6">Lack of safety equipment</label></div>
+                        <div class="option">
+                            <input type="checkbox" name="safetyChallenges" id="safetyChallenges7" value="other">
+                            <label for="safetyChallenges7">Other (please specify):</label>
+                            <input type="text" id="safetyChallengesOther">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <button type="submit" class="submit-btn">Submit Survey</button>
+        </form>
+        
+        <div class="conclusion">
+            <h2>Survey Conclusion</h2>
+            <p>Thank you very much for your valuable time and participation in this survey. The information you have provided will be of great importance in developing the concept of the "Ideal Medical Laboratory" and improving the quality of laboratory services.</p>
+            <p>We assure you once again that all collected data will be treated with complete confidentiality and will only be used for scientific research purposes. The results will be analyzed statistically and presented in an aggregated form without reference to any personal or identifying information.</p>
+            <p>If you would like to receive a summary of the results of this study upon completion, or if you have any other inquiries, please contact us via the email address provided below.</p>
+            <p>With sincere thanks and appreciation,</p>
+            <p>The "Ideal Medical Laboratory" Project Team<br>
+            Faculty of Engineering - Department of Medical Equipment Engineering<br>
+            Al-Bayan University for Science and Technology<br>
+            Email: medical.lab.project@example.com</p>
+        </div>
+    </div>
+    
+    <script>
+        // Show/hide conditional questions based on answers
+        document.addEventListener('DOMContentLoaded', function() {
+            // Contract reason conditional
+            const contractRadios = document.querySelectorAll('input[name="maintenanceContract"]');
+            const noContractReason = document.getElementById('noContractReason');
+            
+            contractRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (this.value === 'no' && this.checked) {
+                        noContractReason.style.display = 'block';
+                    } else {
+                        noContractReason.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Delay duration conditional
+            const delayRadios = document.querySelectorAll('input[name="maintenanceDelay"]');
+            const delayDuration = document.getElementById('delayDuration');
+            
+            delayRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (this.value === 'yes' && this.checked) {
+                        delayDuration.style.display = 'block';
+                    } else {
+                        delayDuration.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Error description conditional
+            const errorRadios = document.querySelectorAll('input[name="maintenanceError"]');
+            const errorDescription = document.getElementById('errorDescription');
+            
+            errorRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (this.value === 'yes' && this.checked) {
+                        errorDescription.style.display = 'block';
+                    } else {
+                        errorDescription.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Accreditation type conditional
+            const accreditationRadios = document.querySelectorAll('input[name="accreditation"]');
+            const accreditationType = document.getElementById('accreditationType');
+            
+            accreditationRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (this.value === 'yes' && this.checked) {
+                        accreditationType.style.display = 'block';
+                    } else {
+                        accreditationType.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Safety incidents related to equipment conditional
+            const incidentsRadios = document.querySelectorAll('input[name="safetyIncidents"]');
+            const incidentsRelatedToEquipment = document.getElementById('incidentsRelatedToEquipment');
+            
+            incidentsRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if ((this.value === 'minor' || this.value === 'multiple') && this.checked) {
+                        incidentsRelatedToEquipment.style.display = 'block';
+                    } else {
+                        incidentsRelatedToEquipment.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Form submission
+            document.getElementById('labSurvey').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Survey submitted successfully! Thank you for your valuable participation.');
+                // Here you would typically send the data to a server
+            });
+        });
+    </script>
+</body>
+</html>
